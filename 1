@@ -1,1 +1,22 @@
+#pig
 wget https://dlcdn.apache.org/pig/pig-0.17.0/pig-0.17.0.tar.gz
+tar xvzf pig-0.17.0.tar.gz
+sudo mv /home/hdoop/pig-0.17.0 /home/hdoop/pig
+sudo nano .bashrc
+
+#PIG settings
+export PIG_HOME=/home/hdoop/pig
+export PATH=$PATH:$PIG_HOME/bin
+export PIG_CLASSPATH=$PIG_HOME/conf:$HADOOP_INSTALL/etc/hadoop/
+export PIG_CONF_DIR=$PIG_HOME/conf
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export PIG_CLASSPATH=$PIG_CONF_DIR:$PATH
+#PIG setting ends
+
+source .bashrc
+
+./start-dfs.sh
+./start-yarn
+jps
+pig
+quit;
