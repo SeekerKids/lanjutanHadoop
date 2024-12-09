@@ -25,5 +25,31 @@ jps
 cd
 pig
 quit;
-
 pig -version
+stop-all.sh
+
+#hive
+wget https://downloads.apache.org/hive/hive-4.0.1/apache-hive-4.0.1-bin.tar.gz
+tar xzf apache-hive-4.0.1-bin.tar.gz
+sudo nano .bashrc
+
+export HIVE_HOME=/home/namauser/apache-hive-4.0.1-bin
+export PATH=$PATH:$HIVE_HOME/bin
+
+source .bashrc
+sudo nano $HIVE_HOME/bin/hive-config.sh
+
+export HADOOP_HOME=/home/namauser/hadoop-4.0.1
+
+hdfs dfs -mkdir /tmp
+hdfs dfs -chmod g+w /tmp
+hdfs dfs -mkdir -p /user/hive/warehouse
+hdfs dfs -chmod g+w /user/hive/warehouse
+
+rm $HIVE_HOME/lib/guava-19.0.jar
+cp $HADOOP_HOME/share/hadoop/hdfs/lib/guava-27.0-jre.jar $HIVE_HOME/lib
+
+cd ~/apache-hive-3.1.2-bin/bin
+$schematool -initSchema -dbType derby
+
+hive
