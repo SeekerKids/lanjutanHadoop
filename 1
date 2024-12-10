@@ -61,3 +61,14 @@ $schematool -initSchema -dbType derby
 */ ampe ini
 
 hive
+
+#hbase
+wget https://archive.apache.org/dist/hbase/2.6.1/hbase-2.6.1-bin.tar.gz
+tar xzvf hbase-2.6.1-bin.tar.gz
+cd hbase-2.6.1/
+sudo nano conf/hbase-env.sh
+
+export JAVA_HOME=/usr/lib/jvm/java-8-opendk-amd64
+
+cd hbase-2.6.1/bin/
+./start-hbase.sh
