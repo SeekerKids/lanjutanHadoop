@@ -72,3 +72,20 @@ export JAVA_HOME=/usr/lib/jvm/java-8-opendk-amd64
 
 cd hbase-2.6.1/bin/
 ./start-hbase.sh
+./hbase shell
+./stop-hbase.sh
+
+#flume
+wget https://archive.apache.org/dist/flume/1.9.0/apache-flume-1.9.0-bin.tar.gz
+tar xzvf apache-flume-1.9.0-bin.tar.gz
+sudo mv apache-flume-1.9.0-bin flume
+
+#Sqoop
+wget https://archive.apache.org/dist/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
+tar xzvf sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
+sudo mv sqoop-1.4.7.bin__hadoop-2.6.0 sqoop
+
+
+cd $SQOOP_HOME/conf
+mv sqoop-env-template.sh sqoop-env.sh
+sudo nano sqoop-env.sh
