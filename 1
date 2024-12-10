@@ -29,6 +29,8 @@ pig -version
 stop-all.sh
 
 #hive
+https://docs.celonis.com/en/connecting-to-apache-hive---apache-hadoop.html
+
 wget https://downloads.apache.org/hive/hive-4.0.1/apache-hive-4.0.1-bin.tar.gz
 tar xzf apache-hive-4.0.1-bin.tar.gz
 sudo nano .bashrc
@@ -40,14 +42,18 @@ source .bashrc
 sudo nano $HIVE_HOME/bin/hive-config.sh
 
 export HADOOP_HOME=/usr/share/Hadoop
+//export HADOOP_HOME=/usr/share/Hadoop/etc/hadoop
 
+
+#The temporary, tmp directory is going to store the intermediate results of Hive processes.
 hdfs dfs -mkdir /tmp
 hdfs dfs -chmod g+w /tmp
+#The warehouse directory is going to store the Hive related tables.
 hdfs dfs -mkdir -p /user/hive/warehouse
 hdfs dfs -chmod g+w /user/hive/warehouse
 
 /* bawah ini ga usah sih, buat trial aja
-rm $HIVE_HOME/lib/guava-19.0.jar
+rm $HIVE_HOME/lib/guava-19.0 .jar
 cp $HADOOP_HOME/share/hadoop/hdfs/lib/guava-27.0-jre.jar $HIVE_HOME/lib
 
 cd ~/apache-hive-3.1.2-bin/bin
